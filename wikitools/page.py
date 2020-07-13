@@ -93,7 +93,7 @@ class Page(object):
 			self.title = self.title.strip()
 			if self.namespace is None and self.title:
 				self.namespace = namespaceDetect(self.title, self.site)
-				if self.namespace is not 0:
+				if self.namespace != 0:
 					nsname = self.site.namespaces[self.namespace]['*']
 					case = self.site.namespaces[self.namespace]['case']
 					self.unprefixedtitle = self.title.split(':', 1)[1]
@@ -141,7 +141,7 @@ class Page(object):
 		if 'title' in response['query']['pages'][str(self.pageid)]:
 			self.title = response['query']['pages'][str(self.pageid)]['title']
 			self.namespace = int(response['query']['pages'][str(self.pageid)]['ns'])
-			if self.namespace is not 0:
+			if self.namespace != 0:
 				self.unprefixedtitle = self.title.split(':', 1)[1]
 			else:
 				self.unprefixedtitle = self.title
@@ -657,7 +657,7 @@ class Page(object):
 		if 'move' in result:
 			self.title = result['move']['to']
 			self.namespace = namespaceDetect(self.title, self.site)
-			if self.namespace is not 0:
+			if self.namespace != 0:
 				self.unprefixedtitle = self.title.split(':', 1)[1]
 			else:
 				self.unprefixedtitle = self.title
