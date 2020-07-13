@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # Copyright 2008-2013 Alex Zaddach (mrzmanwiki@gmail.com),  bjweeks
 
 # This file is part of wikitools.
@@ -112,7 +112,7 @@ class Page(object):
 		else:
 			if self.namespace is False and self.title:
 				self.namespace = namespaceDetect(self.title, self.site)
-				if self.namespace is not 0:
+				if self.namespace != 0:
 					nsname = self.site.namespaces[self.namespace]['*']
 					self.unprefixedtitle = self.title.split(':', 1)[1]
 					self.title = ':'.join((nsname, self.unprefixedtitle))
@@ -155,7 +155,7 @@ class Page(object):
 		if 'title' in response['query']['pages'][str(self.pageid)]:
 			self.title = response['query']['pages'][str(self.pageid)]['title'].encode('utf-8')
 			self.namespace = int(response['query']['pages'][str(self.pageid)]['ns'])
-			if self.namespace is not 0:
+			if self.namespace != 0:
 				self.unprefixedtitle = self.title.split(':', 1)[1]	
 			else:
 				self.unprefixedtitle = self.title
@@ -674,7 +674,7 @@ class Page(object):
 		if 'move' in result:
 			self.title = result['move']['to']
 			self.namespace = namespaceDetect(self.title, self.site)
-			if self.namespace is not 0:
+			if self.namespace != 0:
 				self.unprefixedtitle = self.title.split(':', 1)[1]
 			else:
 				self.unprefixedtitle = self.title			
